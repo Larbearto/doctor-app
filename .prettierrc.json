@@ -1,8 +1,8 @@
 {
   "arrowParens": "always",
   "bracketSpacing": true,
-  "bracketSameLine": false,
-  "indent_style": "space",
+  "bracketSameLine": true,
+  "indent_style": "tab",
   "indent_size": 2,
   "jsxSingleQuote": true,
   "printWidth": 100,

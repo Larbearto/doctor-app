@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+input,
+textarea,
+select {
+  height: 45px !important;
+  border: 1px solid #909090;
+  padding-left: 15px;
+  width: 100%;
+}
+input:focus,
+textarea,
+select {
+  outline: none;
+  border: 1px solid #909090;
+}
+
+textarea {
+  min-height: 100px;
+  padding-top: 20px;
+}
+
+hr {
+  border: 1px solid #c7c5c5;
+}

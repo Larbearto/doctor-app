@@ -35,9 +35,7 @@ function Login() {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'))
-    if (user) {
-      navigate('/')
-    }
+    if (user) navigate('/')
   }, [])
 
   return (
@@ -55,13 +53,12 @@ function Login() {
 
           <button
             type='submit'
-            className='w-full bg-black text-white py-2 rounded-xl contained-btn'
-          >
+            className='w-full bg-black text-white py-2 rounded-xl contained-btn'>
             Log in
           </button>
         </Form>
         <div className='cursor-pointer pt-8'>
-          <Link to='/signup' className=' '>
+          <Link to='/register' className=' '>
             Not signed up? <strong>Sign Up</strong>
           </Link>
         </div>

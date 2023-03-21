@@ -1,27 +1,31 @@
-import { Button, Typography, Form, Input, Tooltip, message, Space, Row, Select } from 'antd'
+import { Button, Form, Input } from 'antd'
 import { CreateUser } from '../../apicalls/users'
-import { Link } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
+import toast from 'react-hot-toast'
+import { ShowLoader } from '../../redux/loaderSlice'
 
-function Signup() {
+function Register() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const onFinish = async (values) => {
     try {
       dispatch(ShowLoader(true))
-      const response = await CreateUser(values)
-      dispatch(ShowLoader(true))
+      const response = await CreateUser({
+        ...values,
+        role: 'user'
+      })
+      dispatch(ShowLoader(false))
       if (response.success) {
-        message.success(response.message)
+        toast.success(response.message)
         navigate('/login')
       } else {
         throw new Error(response.message)
       }
     } catch (error) {
       dispatch(ShowLoader(false))
-      message.error(error.message)
+      toast.error('Something went wrong')
     }
   }
 
@@ -63,4 +67,4 @@ function Signup() {
   )
 }
 
-export default Signup
+export default Register

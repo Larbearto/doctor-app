@@ -1,21 +1,20 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import ProtectedRoute from './components/ProtectedRoute'
-import Signup from './pages/Signup'
+import Register from './pages/Register'
 import Login from './pages/Login'
 import Profile from './pages/Profile'
-import Spinner from './components/Spinner'
-import { useSelector } from 'react-redux'
+import ApplyDoctor from './pages/ApplyDoctor'
+import AdminIndex from './pages/Admin'
+import BookAppointment from './pages/BookAppointment'
 
 function App() {
-  const { loading } = useSelector((state) => state.loader)
   return (
     <div className='App'>
-      {loading && <Spinner />}
       <BrowserRouter>
         <Routes>
-          <Route path='/signup' element={<Signup />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
           <Route
             path='/'
             element={
@@ -25,10 +24,37 @@ function App() {
             }
           />
           <Route
+            path='/applydoctor'
+            element={
+              <ProtectedRoute>
+                <ApplyDoctor />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
             path='/profile'
             element={
               <ProtectedRoute>
                 <Profile />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path='/bookappointment/:id'
+            element={
+              <ProtectedRoute>
+                <BookAppointment />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path='/admin'
+            element={
+              <ProtectedRoute>
+                <AdminIndex />
               </ProtectedRoute>
             }
           />
